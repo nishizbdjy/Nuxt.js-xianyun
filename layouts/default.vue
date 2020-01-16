@@ -4,15 +4,19 @@
     <Header />
     <!-- router-view -->
     <nuxt />
+    <!-- 底部 -->
+    <Footer/>
   </div>
 </template>
 
 
 <script>
 import Header from "@/components/header.vue";
+import Footer from "@/components/footer.vue";
 export default {
   components: {
     Header, //导航栏
+    Footer //底部
   }
 };
 </script>
