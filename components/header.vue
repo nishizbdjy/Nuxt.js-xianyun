@@ -1,4 +1,5 @@
 <template>
+<!-- 头部导航 -->
   <div class="box">
     <el-row class="header" type="flex" justify="space-between" align="middle">
       <!-- logo -->
@@ -23,10 +24,11 @@ export default {};
 </script>
 
 <style lang="less" scoped>
-.box{
+.box {
   box-shadow: 0 3px 0 #f5f5f5;
   position: relative;
   z-index: 2;
+  min-width: 1000px;
 }
 .header {
   width: 1000px;
@@ -55,12 +57,12 @@ export default {};
       color: #409eff;
     }
   }
-}
-.nuxt-link-exact-active {
-  background-color: #409eff;
-  color: #fff;
-  &:hover {
-    color: #fff !important;
+  .nuxt-link-exact-active {
+    background-color: #409eff;
+    color: #fff;
+    &:hover {
+      color: #fff !important;
+    }
   }
 }
 </style>

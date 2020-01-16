@@ -1,18 +1,18 @@
 <template>
   <div>
-    <!-- router-view -->
     <!-- 导航栏 -->
     <Header />
+    <!-- router-view -->
     <nuxt />
   </div>
 </template>
 
 
 <script>
-import Header from '@/components/header.vue'
+import Header from "@/components/header.vue";
 export default {
   components: {
-    Header//导航栏
+    Header, //导航栏
   }
 };
 </script>
