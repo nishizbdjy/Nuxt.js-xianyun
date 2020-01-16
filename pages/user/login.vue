@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="login">
+      用户登陆页面
   </div>
-</template>
-<template>
-  
 </template>
 
 <script>
@@ -14,4 +11,5 @@ export default {
 </script>
 
 <style>
+
 </style>
