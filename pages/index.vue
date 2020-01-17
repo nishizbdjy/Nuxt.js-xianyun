@@ -151,6 +151,7 @@ export default {
         background: rgba(0, 0, 0, 0.5);
         border-radius: 1px 2px 0 0;
         box-sizing: border-box;
+        transition: all 1s;
       }
     }
   }
