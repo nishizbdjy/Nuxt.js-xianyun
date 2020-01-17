@@ -38,14 +38,37 @@ export default {
       // 表单规则
       rules: {
         username: [{ validator: validatePass, trigger: "blur" }],
-        password: [{ required: true, message:'请输入至少一位数',trigger: "blur" }]
+        password: [
+          { required: true, message: "请输入至少一位数", trigger: "blur" }
+        ]
       }
     };
   },
   methods: {
     // 提交登录
     handleLoginSubmit() {
-      console.log(this.form);
+      this.$refs.form.validate(value => {
+        if (value) {
+          this.$axios({
+            url: "/accounts/login",
+            method: "post",
+            data: this.form
+          }).then(res => {
+            //成功回调
+            //存储token
+            // console.log(res);
+            const {data} = res
+            // localStorage.setItem("xianyuntoen", res.data.token);
+            //赋值给仓库
+            console.log(data);
+            
+            this.$store.commit('user/setuserInfo',data)
+            
+            //跳转主页页面
+            // this.$router.push({ path: "/" });
+          })
+        }
+      });
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-<!-- 头部导航 -->
+  <!-- 头部导航 -->
   <div class="box">
     <el-row class="header" type="flex" justify="space-between" align="middle">
       <!-- logo -->
@@ -14,13 +14,34 @@
         <nuxt-link to="/air">国内机票</nuxt-link>
       </el-row>
       <!-- 登陆 -->
-      <nuxt-link to="/user/login">登录/注册</nuxt-link>
+        <nuxt-link to="/user/login" v-if="!$store.state.user.userInfo.token">登录/注册</nuxt-link>
+      <!-- 下拉菜单 -->
+      <el-dropdown v-else>
+        <span class="el-dropdown-link">
+          <img :src="$axios.defaults.baseURL + $store.state.user.userInfo.user.defaultAvatar" />
+          {{$store.state.user.userInfo.user.nickname}}
+          <i
+            class="el-icon-arrow-down el-icon--right"
+          ></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item disabled>个人中心</el-dropdown-item>
+          <el-dropdown-item divided>退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </el-row>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  mounted() {
+    console.log(this.$store.state.user.userInfo);
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -62,6 +83,20 @@ export default {};
     color: #fff;
     &:hover {
       color: #fff !important;
+    }
+  }
+}
+.el-dropdown-link{
+    cursor: pointer;
+
+  img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50px;
+    vertical-align:middle;
+    border: 1.5px solid #fff;
+    &:hover{
+      border: 1.5px solid #409eff;
     }
   }
 }
