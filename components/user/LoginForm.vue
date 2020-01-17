@@ -1,5 +1,5 @@
 <template>
-<!-- 登录页表单imput组件 -->
+  <!-- 登录页表单imput组件 -->
   <el-form :model="form" ref="form" :rules="rules" class="form">
     <el-form-item class="form-item" prop="username">
       <el-input placeholder="用户名/手机" v-model="form.username"></el-input>
@@ -20,14 +20,26 @@
 <script>
 export default {
   data() {
+    //username验证规则处理
+    var validatePass = (rule, value, callback) => {
+      let trr = /^1[3-9][0-9]{9}$/.test(value);
+      if (trr) {
+        callback();
+      } else {
+        callback(new Error("手机号格式不正确"));
+      }
+    };
     return {
       // 表单数据
       form: {
-          username:'',//用户名
-          password:''//密码
+        username: "", //用户名
+        password: "" //密码
       },
       // 表单规则
-      rules: {}
+      rules: {
+        username: [{ validator: validatePass, trigger: "blur" }],
+        password: [{ required: true, message:'请输入至少一位数',trigger: "blur" }]
+      }
     };
   },
   methods: {
